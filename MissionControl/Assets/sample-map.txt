@@ -1,0 +1,27 @@
+# Sample map for Mission Control. Road distances are rounded approximations.
+# Format: City - City,km  (the spaces let names like Ivano-Frankivsk keep their hyphen)
+Kyiv - Zhytomyr,140
+Zhytomyr - Rivne,190
+Rivne - Lviv,210
+Kyiv - Vinnytsia,270
+Vinnytsia - Khmelnytskyi,120
+Khmelnytskyi - Ternopil,110
+Ternopil - Lviv,130
+Lviv - Ivano-Frankivsk,130
+Ivano-Frankivsk - Chernivtsi,135
+Chernivtsi - Khmelnytskyi,190
+Lviv - Uzhhorod,270
+Kyiv - Cherkasy,190
+Cherkasy - Kropyvnytskyi,130
+Kropyvnytskyi - Mykolaiv,185
+Vinnytsia - Odesa,430
+Odesa - Mykolaiv,130
+Mykolaiv - Kherson,65
+Kyiv - Poltava,345
+Poltava - Kharkiv,145
+Kyiv - Chernihiv,150
+Chernihiv - Sumy,320
+Sumy - Kharkiv,180
+Poltava - Dnipro,190
+Dnipro - Zaporizhzhia,85
+Dnipro - Kharkiv,220

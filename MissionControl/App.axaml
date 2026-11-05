@@ -1,0 +1,165 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MissionControl.App"
+             RequestedThemeVariant="Light">
+  <Application.Resources>
+    <SolidColorBrush x:Key="InkBrush" Color="#333333" />
+    <SolidColorBrush x:Key="MarkerBrush" Color="#C44536" />
+    <SolidColorBrush x:Key="PaperBrush" Color="#F1ECE0" />
+    <SolidColorBrush x:Key="FieldBrush" Color="#FBF8F1" />
+    <FontFamily x:Key="BodyFont">avares://MissionControl/Assets/Fonts#Fira Sans Condensed</FontFamily>
+    <FontFamily x:Key="DisplayFont">avares://MissionControl/Assets/Fonts#Fira Sans Extra Condensed</FontFamily>
+    <CornerRadius x:Key="ControlCornerRadius">0</CornerRadius>
+    <CornerRadius x:Key="OverlayCornerRadius">0</CornerRadius>
+    <Color x:Key="SystemAccentColor">#C44536</Color>
+    <x:Double x:Key="TextControlPlaceholderOpacity">1</x:Double>
+    <SolidColorBrush x:Key="TextControlBorderBrush" Color="#333333" />
+    <SolidColorBrush x:Key="TextControlBorderBrushPointerOver" Color="#333333" />
+    <SolidColorBrush x:Key="TextControlBorderBrushFocused" Color="#C44536" />
+    <SolidColorBrush x:Key="TextControlBackground" Color="#FBF8F1" />
+    <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="#FBF8F1" />
+    <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="TextControlForeground" Color="#333333" />
+    <SolidColorBrush x:Key="TextControlForegroundFocused" Color="#333333" />
+    <SolidColorBrush x:Key="TextControlPlaceholderForeground" Color="#6B6660" />
+    <SolidColorBrush x:Key="TextControlPlaceholderForegroundPointerOver" Color="#6B6660" />
+    <SolidColorBrush x:Key="TextControlPlaceholderForegroundFocused" Color="#6B6660" />
+    <SolidColorBrush x:Key="ComboBoxBackground" Color="#FBF8F1" />
+    <SolidColorBrush x:Key="ComboBoxBackgroundPointerOver" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="ComboBoxBackgroundPressed" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="ComboBoxBorderBrush" Color="#333333" />
+    <SolidColorBrush x:Key="ComboBoxBorderBrushPointerOver" Color="#333333" />
+    <SolidColorBrush x:Key="ComboBoxBorderBrushPressed" Color="#C44536" />
+    <SolidColorBrush x:Key="ComboBoxForeground" Color="#333333" />
+    <SolidColorBrush x:Key="ComboBoxPlaceHolderForeground" Color="#6B6660" />
+    <SolidColorBrush x:Key="ComboBoxDropDownBackground" Color="#FBF8F1" />
+    <SolidColorBrush x:Key="ComboBoxDropDownBorderBrush" Color="#333333" />
+  </Application.Resources>
+
+  <Application.Styles>
+    <FluentTheme />
+
+    <Style Selector="Window">
+      <Setter Property="FontFamily" Value="{StaticResource BodyFont}" />
+      <Setter Property="FontSize" Value="16" />
+      <Setter Property="Foreground" Value="{StaticResource InkBrush}" />
+    </Style>
+
+    <!-- Field labels on the desk -->
+    <Style Selector="TextBlock.field">
+      <Setter Property="FontWeight" Value="Bold" />
+      <Setter Property="FontSize" Value="14" />
+      <Setter Property="Margin" Value="0,0,0,3" />
+    </Style>
+    <Style Selector="TextBlock.note">
+      <Setter Property="FontSize" Value="15" />
+      <Setter Property="TextWrapping" Value="Wrap" />
+    </Style>
+    <Style Selector="TextBlock.deskTag">
+      <Setter Property="FontFamily" Value="{StaticResource DisplayFont}" />
+      <Setter Property="FontWeight" Value="Bold" />
+      <Setter Property="FontSize" Value="24" />
+      <Setter Property="Foreground" Value="{StaticResource PaperBrush}" />
+    </Style>
+    <Style Selector="Border.deskTag">
+      <Setter Property="Background" Value="{StaticResource InkBrush}" />
+      <Setter Property="Padding" Value="8,0,8,1" />
+      <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+    <Style Selector="Border.deskRule">
+      <Setter Property="Height" Value="2" />
+      <Setter Property="Background" Value="{StaticResource InkBrush}" />
+    </Style>
+
+    <!-- Fields -->
+    <Style Selector="TextBox">
+      <Setter Property="BorderThickness" Value="2" />
+      <Setter Property="FontSize" Value="17" />
+      <Setter Property="MinHeight" Value="38" />
+      <Setter Property="PlaceholderForeground" Value="#5F5A52" />
+    </Style>
+    <Style Selector="ComboBox">
+      <Setter Property="BorderThickness" Value="2" />
+      <Setter Property="FontSize" Value="17" />
+      <Setter Property="MinHeight" Value="38" />
+      <Setter Property="HorizontalAlignment" Value="Stretch" />
+      <Setter Property="MaxDropDownHeight" Value="320" />
+      <Setter Property="PlaceholderForeground" Value="#5F5A52" />
+    </Style>
+
+    <!-- Buttons: ink outline, reverse video on hover, a printed nudge on press -->
+    <Style Selector="Button">
+      <Setter Property="BorderBrush" Value="{StaticResource InkBrush}" />
+      <Setter Property="BorderThickness" Value="2" />
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="Foreground" Value="{StaticResource InkBrush}" />
+      <Setter Property="FontWeight" Value="Bold" />
+      <Setter Property="FontSize" Value="16" />
+      <Setter Property="MinHeight" Value="38" />
+      <Setter Property="Padding" Value="12,4" />
+      <Setter Property="HorizontalContentAlignment" Value="Center" />
+      <Setter Property="VerticalContentAlignment" Value="Center" />
+      <Setter Property="HorizontalAlignment" Value="Stretch" />
+    </Style>
+    <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="Background" Value="{StaticResource InkBrush}" />
+      <Setter Property="BorderBrush" Value="{StaticResource InkBrush}" />
+      <Setter Property="Foreground" Value="{StaticResource PaperBrush}" />
+    </Style>
+    <Style Selector="Button:pressed /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="Background" Value="{StaticResource MarkerBrush}" />
+      <Setter Property="BorderBrush" Value="{StaticResource MarkerBrush}" />
+      <Setter Property="Foreground" Value="{StaticResource PaperBrush}" />
+    </Style>
+    <Style Selector="Button:pressed">
+      <Setter Property="RenderTransform" Value="translateY(1px)" />
+    </Style>
+    <Style Selector="Button:disabled /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="BorderBrush" Value="#A8A296" />
+      <Setter Property="Foreground" Value="#8A8478" />
+    </Style>
+    <Style Selector="Button.primary">
+      <Setter Property="Background" Value="{StaticResource InkBrush}" />
+      <Setter Property="Foreground" Value="{StaticResource PaperBrush}" />
+    </Style>
+    <Style Selector="Button.primary:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="Background" Value="{StaticResource MarkerBrush}" />
+      <Setter Property="BorderBrush" Value="{StaticResource MarkerBrush}" />
+    </Style>
+    <Style Selector="Button.stop">
+      <Setter Property="MinHeight" Value="30" />
+      <Setter Property="MinWidth" Value="30" />
+      <Setter Property="Padding" Value="0" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="FontSize" Value="20" />
+    </Style>
+
+    <!-- Traveler roster -->
+    <Style Selector="ListBox">
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="BorderBrush" Value="{StaticResource InkBrush}" />
+      <Setter Property="BorderThickness" Value="2" />
+    </Style>
+    <Style Selector="ListBoxItem">
+      <Setter Property="Padding" Value="10,6" />
+      <Setter Property="FontSize" Value="17" />
+    </Style>
+    <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="Background" Value="#E2DBCB" />
+      <Setter Property="Foreground" Value="{StaticResource InkBrush}" />
+    </Style>
+    <Style Selector="ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="Background" Value="{StaticResource InkBrush}" />
+      <Setter Property="Foreground" Value="{StaticResource PaperBrush}" />
+    </Style>
+    <Style Selector="ListBoxItem:selected:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="Background" Value="{StaticResource InkBrush}" />
+      <Setter Property="Foreground" Value="{StaticResource PaperBrush}" />
+    </Style>
+    <Style Selector="ListBoxItem:selected:focus /template/ ContentPresenter#PART_ContentPresenter">
+      <Setter Property="Background" Value="{StaticResource InkBrush}" />
+      <Setter Property="Foreground" Value="{StaticResource PaperBrush}" />
+    </Style>
+  </Application.Styles>
+</Application>

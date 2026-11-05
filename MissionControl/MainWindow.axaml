@@ -1,0 +1,86 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:MissionControl.Controls"
+        x:Class="MissionControl.MainWindow"
+        Title="Mission Control"
+        Width="1440" Height="900"
+        MinWidth="560" MinHeight="520">
+  <Grid x:Name="Root" ColumnDefinitions="372,*" RowDefinitions="*">
+
+    <!-- The control desk -->
+    <Border x:Name="DeskPane" BorderBrush="{StaticResource InkBrush}" BorderThickness="0,0,2,0">
+      <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="20,18,20,24" Spacing="10">
+
+          <Border Classes="deskTag"><TextBlock Classes="deskTag" Text="MAP" /></Border>
+          <TextBlock x:Name="MapStatus" Classes="note" Text="No map on the desk." />
+          <Grid ColumnDefinitions="*,8,*">
+            <Button x:Name="LoadMapButton" Content="Load map…" Click="OnLoadMap" />
+            <Button x:Name="SampleMapButton" Grid.Column="2" Content="Use sample" Click="OnUseSampleMap" />
+          </Grid>
+
+          <Border Classes="deskRule" Margin="0,8,0,4" />
+
+          <Border Classes="deskTag"><TextBlock Classes="deskTag" Text="TRAVELER" /></Border>
+          <ListBox x:Name="Roster" MaxHeight="150" SelectionChanged="OnRosterSelectionChanged"
+                   AutomationProperties.Name="Signed-in travelers" />
+          <StackPanel>
+            <TextBlock Classes="field" Text="NAME" />
+            <TextBox x:Name="NameBox" PlaceholderText="Who is travelling?" MaxLength="60"
+                     AutomationProperties.Name="Traveler name" KeyDown="OnNameKeyDown" />
+          </StackPanel>
+          <StackPanel>
+            <TextBlock Classes="field" Text="STARTING CITY" />
+            <ComboBox x:Name="StartBox" PlaceholderText="Choose a city"
+                      AutomationProperties.Name="Starting city" />
+          </StackPanel>
+          <Button x:Name="SignInButton" Classes="primary" Content="Sign in traveler" Click="OnSignIn" />
+          <Grid ColumnDefinitions="*,8,*,8,*">
+            <Button x:Name="LoadTravelerButton" Content="Load…" Click="OnLoadTraveler" HotKey="Ctrl+O"
+                    ToolTip.Tip="Load a traveler file (Ctrl+O)" />
+            <Button x:Name="SaveTravelerButton" Grid.Column="2" Content="Save…" Click="OnSaveTraveler" HotKey="Ctrl+S"
+                    ToolTip.Tip="Save the selected traveler (Ctrl+S)" />
+            <Button x:Name="RemoveTravelerButton" Grid.Column="4" Content="Remove" Click="OnRemoveTraveler"
+                    ToolTip.Tip="Remove the selected traveler from the desk" />
+          </Grid>
+
+          <Border Classes="deskRule" Margin="0,8,0,4" />
+
+          <Border Classes="deskTag"><TextBlock Classes="deskTag" Text="ROUTE" /></Border>
+          <StackPanel>
+            <TextBlock Classes="field" Text="DESTINATION" />
+            <ComboBox x:Name="DestinationBox" PlaceholderText="Choose a city"
+                      AutomationProperties.Name="Destination" />
+          </StackPanel>
+          <Button x:Name="PlanButton" Classes="primary" Content="Plan shortest route" Click="OnPlanRoute" />
+
+          <StackPanel Margin="0,4,0,0">
+            <TextBlock Classes="field" Text="ADD A STOP" />
+            <Grid ColumnDefinitions="*,8,Auto">
+              <ComboBox x:Name="AddStopBox" PlaceholderText="Choose a city"
+                        AutomationProperties.Name="City to add to the route" />
+              <Button x:Name="AddStopButton" Grid.Column="2" Content="Add" Click="OnAddStop" />
+            </Grid>
+          </StackPanel>
+          <Grid ColumnDefinitions="*,8,*,8,*">
+            <Button x:Name="MendButton" Content="Mend" Click="OnMendRoute"
+                    ToolTip.Tip="Fill any broken leg with the shortest road" />
+            <Button x:Name="UndoButton" Grid.Column="2" Content="Undo" Click="OnUndo" HotKey="Ctrl+Z"
+                    ToolTip.Tip="Undo the last route edit (Ctrl+Z)" />
+            <Button x:Name="ClearButton" Grid.Column="4" Content="Clear" Click="OnClearRoute"
+                    ToolTip.Tip="Remove every stop from this route" />
+          </Grid>
+          <TextBlock x:Name="StopsTitle" Classes="field" Text="STOPS" Margin="0,8,0,0" />
+          <TextBlock x:Name="NoStopsNote" Classes="note" Text="No stops yet." />
+          <StackPanel x:Name="StopList" Spacing="4" />
+
+        </StackPanel>
+      </ScrollViewer>
+    </Border>
+
+    <!-- The newspaper -->
+    <ScrollViewer x:Name="PaperScroll" Grid.Column="1" HorizontalScrollBarVisibility="Disabled">
+      <controls:FrontPageView x:Name="Paper" />
+    </ScrollViewer>
+  </Grid>
+</Window>
